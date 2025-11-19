@@ -1,7 +1,7 @@
 # Ignorar carpetas de dependencias
 node_modules/
 
-# Ignorar archivos de entorno (con secretos como claves de API)
+# Ignorar archivos de entorno 
 .env
 .env.local
 .env.development
@@ -12,10 +12,11 @@ node_modules/
 temp/
 tmp/
 
-# Ignorar builds o dist (para frontend)
+# Ignorar builds o dist 
 build/
 dist/
 
 # Ignorar archivos de sistema
 .DS_Store  # Para Mac
+
 Thumbs.db  # Para Windows
