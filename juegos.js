@@ -3,7 +3,7 @@ const Juego = require('../models/Juego');
 
 const router = express.Router(); 
 
-// 1. BUSCAR TODOS LOS JUEGOS (GET /juegos)
+// 1. BUSCAR TODOS LOS JUEGOS 
 router.get('/', async (req, res) => {
   try {
     const juegos = await Juego.find().sort({ createdAt: -1 });
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 2. AGREGAR UN JUEGO (POST /juegos)
+// 2. AGREGAR UN JUEGO 
 router.post('/', async (req, res) => {
   try {
     const { 
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 3. EDITAR UN JUEGO (PUT /juegos/:id)
+// 3. EDITAR UN JUEGO 
 router.put('/:id', async (req, res) => {
   try {
     const juego = await Juego.findByIdAndUpdate(req.params.id, req.body, { new: true }); 
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// 4. ELIMINAR UN JUEGO (DELETE /juegos/:id)
+// 4. ELIMINAR UN JUEGO 
 router.delete('/:id', async (req, res) => {
   try {
     const juego = await Juego.findByIdAndDelete(req.params.id); 
@@ -73,3 +73,4 @@ router.delete('/:id', async (req, res) => {
 
 
 module.exports = router; 
+
