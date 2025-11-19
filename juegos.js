@@ -1,7 +1,7 @@
 const express = require('express');
-const Juego = require('../models/Juego'); // Importa el modelo que creamos antes
+const Juego = require('../models/Juego'); 
 
-const router = express.Router(); // Crea un mini-servidor para rutas
+const router = express.Router(); 
 
 // 1. BUSCAR TODOS LOS JUEGOS (GET /juegos)
 router.get('/', async (req, res) => {
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const { 
       titulo, 
-      portada,  // Cambiado de portadaUrl a portada para coincidir con esquema
+      portada,  
       completado, 
       horas, 
       genero, 
@@ -33,9 +33,9 @@ router.post('/', async (req, res) => {
 
     const juego = new Juego({
       titulo: titulo.trim(),
-      portada: portada || '',  // Usa portada
+      portada: portada || '',  
       completado: Boolean(completado),
-      horas: Number(horas) || 0,  // Si agregas al esquema
+      horas: Number(horas) || 0,  
       genero: genero || 'Sin género',
       plataformas: plataformas || [],
       clasificacion: clasificacion || 'Sin clasificación',
@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
 // 3. EDITAR UN JUEGO (PUT /juegos/:id)
 router.put('/:id', async (req, res) => {
   try {
-    const juego = await Juego.findByIdAndUpdate(req.params.id, req.body, { new: true }); // Encuentra por ID y actualiza
+    const juego = await Juego.findByIdAndUpdate(req.params.id, req.body, { new: true }); 
     if (!juego) return res.status(404).json({ message: 'Juego no encontrado' });
     res.json(juego);
   } catch (err) {
@@ -63,7 +63,7 @@ router.put('/:id', async (req, res) => {
 // 4. ELIMINAR UN JUEGO (DELETE /juegos/:id)
 router.delete('/:id', async (req, res) => {
   try {
-    const juego = await Juego.findByIdAndDelete(req.params.id); // Borra por ID
+    const juego = await Juego.findByIdAndDelete(req.params.id); 
     if (!juego) return res.status(404).json({ message: 'Juego no encontrado' });
     res.json({ message: 'Juego eliminado' });
   } catch (err) {
@@ -71,4 +71,5 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router; // Exporta para usar en index.js
+
+module.exports = router; 
